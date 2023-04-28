@@ -1,1 +1,12 @@
-/* You can add global styles to this file, and also import other style files */
+html,
+body {
+    background: linear-gradient(0deg, rgba(234, 234, 234, 0.594), rgba(255, 255, 255, 0.706)), url('assets/img/bg1.jpg');
+    background-size: cover;
+    height: 100%;
+    background-attachment: fixed;
+}
+
+body {
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+}

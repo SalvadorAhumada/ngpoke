@@ -1,0 +1,35 @@
+.example-spacer {
+    flex: 1 1 auto;
+  }
+
+p {
+    margin: 0;
+}
+
+.logo {
+    height:45px;
+}
+
+.mat-toolbar {
+    background-color: rgba(255, 255, 255, 0.559);  
+    backdrop-filter: blur(5px);
+    position: fixed;
+    left: 0;
+    right: 0;
+    z-index: 2;
+}
+
+button {
+    background: rgb(90,171,250);
+    background: radial-gradient(circle, rgba(90,171,250,1) 0%, rgba(8,72,128,1) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+h1 {
+    font-weight: 100;
+    font-size: 1.2rem;
+    border: 2px solid black;
+    padding: 5px 20px;
+    cursor: pointer;
+}
