@@ -1,4 +1,8 @@
-<div *ngIf="loading" class="loading">
+<div class="error" *ngIf="errorMsg !== '' ">
+    {{ errorMsg }}
+    <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="pest_control"></mat-icon>
+</div>
+<div *ngIf="errorMsg === '' && loading" class="loading">
     <div class="loading-wrapper">
         <img src="assets/img/loader.gif" width="100px" />
         <img src="assets/img/loader.gif" width="100px" />
@@ -6,10 +10,22 @@
     </div>
 </div>
 <div class="cards-wrapper">
-    <mat-grid-list cols="3" rowHeight="2:1" gutterSize="30px">
+    <mat-grid-list cols="4" rowHeight="2:1.5" *ngIf="pokemons$ | async as pokemons">
         <mat-grid-tile *ngFor="let pokemon of pokemons; let i = index" class="grid-card">
-            <mat-grid-tile-header>{{ pokemon.name | uppercase }}</mat-grid-tile-header>
-<!--             <img width="100px" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/{{i+1}}.png"/> -->
+            <mat-card [routerLink]="getPokemonLink(pokemon)">
+                <mat-card-header>
+                    <app-icon-type [pokemonName]="pokemon.name"></app-icon-type>
+                </mat-card-header>
+                <mat-card-content>
+                    <!--                     <img width="100px"
+                    src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/{{i+1}}.png" 
+                    /> -->
+                    <img src="assets/img/loader.gif" width="100px" />
+                </mat-card-content>
+                <mat-card-footer>
+                    {{ pokemon.name }}
+                </mat-card-footer>
+            </mat-card>
         </mat-grid-tile>
     </mat-grid-list>
 </div>

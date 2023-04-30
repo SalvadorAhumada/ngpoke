@@ -1,0 +1,44 @@
+{
+    "data": {
+        "id": 25,
+        "weight": 200,
+        "stats": [
+            {
+                "stat": {
+                    "name": "hp"
+                }
+            },
+            {
+                "stat": {
+                    "name": "attack"
+                }
+            }
+        ],
+        "moves": [
+            {
+                "move": {
+                    "name": "mega-punch"
+                }
+            },
+            {
+                "move": {
+                    "name": "machine"
+                }
+            }
+        ],
+        "height": 50,
+        "abilities": [
+            {
+                "name": "static"
+            },
+            {
+                "name": "lighting-rod"
+            }
+        ],
+        "type": [
+            {
+                "type": "electric"
+            }
+        ]
+    }
+}

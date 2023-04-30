@@ -1,0 +1,10 @@
+h2 {
+    text-align: center;
+}
+
+.not-found {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-direction: column;
+}

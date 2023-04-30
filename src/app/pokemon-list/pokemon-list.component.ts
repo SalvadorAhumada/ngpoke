@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { PokemonService } from '../pokemon.service';
-import { Subscription } from 'rxjs';
+import { EMPTY, Observable, catchError } from 'rxjs';
 import { IPokemon } from '../pokemon';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-pokemon-list',
@@ -10,30 +11,39 @@ import { IPokemon } from '../pokemon';
 })
 
 export class PokemonListComponent implements OnInit {
-  constructor(private pokemonService: PokemonService) { }
 
+  constructor(private pokemonService: PokemonService, route: Router) {
+
+    const state = route.getCurrentNavigation();
+
+    if (state?.previousNavigation) this.loading = false;
+
+  }
   title: string = 'ngPokemon';
-  sub!: Subscription;
   errorMessage: string = '';
   loading: boolean = true;
-  pokemons: IPokemon[] = [];
+  pokemons$: Observable<IPokemon[]> | undefined;
+  errorMsg = '';
 
+  getPokemonLink(pokemon: IPokemon):string {
 
-  pageIsLoadedValidator(): void {
-    window.addEventListener("load", () => {
-        if (document.readyState == "complete") {
-          this.loading = false;
-        }
-    });
+    return `/pokedex/${
+      encodeURIComponent(
+        pokemon.name.toLocaleLowerCase()
+      )}`;
   }
 
   ngOnInit(): void {
-    this.sub = this.pokemonService.getPokemons().subscribe({
-      next: pokemons => {
-        this.pokemons = pokemons.results;
-        this.pageIsLoadedValidator();
-      },
-      error: err => this.errorMessage = err
-    })
+
+    this.pokemons$ = this.pokemonService.getPokemons().pipe(
+      catchError((err) => {
+        this.errorMsg = err;
+        return EMPTY;
+      })
+    )
+  }
+
+  @HostListener('window:load', ['$event']) onDocumentLoad(_event: Event) {
+    this.loading = false;
   }
 }
