@@ -1,22 +1,20 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, catchError, map, tap, throwError } from 'rxjs';
-import { IResponsePokemon } from './responsePokemon';
-import { IPokemon } from './pokemon';
-import { IPokemonDetails } from './pokemonDetail';
+import { Observable, catchError, map, throwError } from 'rxjs';
+import { IResponsePokemon } from './shared/interfaces/responsePokemon';
+import { IPokemon } from './shared/interfaces/pokemon';
+import { IPokemonDetails } from './shared/interfaces/pokemonDetail';
+import { environment } from '../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
+
 export class PokemonService {
 
-  // private url = 'https://pokeapi.co/api/v2/pokemon?limit=5&amp;offset=200';
+  private url = environment.fakeApi === true ? "fakeApi/pokemons/pokemons.json" : "https://pokeapi.co/api/v2/pokemon?limit=20&amp;offset=200"
   
-  private url = 'fakeApi/pokemons/pokemons.json';
-
-  private detailPokemon = 'fakeApi/pokemon/pokemonDetail.json';
-  
-  // private detailUrl = 'https://pokeapi.co/api/v2/pokemon/';
+  private detailPokemon = environment.fakeApi === true ? "fakeApi/pokemon/pokemonDetail.json" : "https://pokeapi.co/api/v2/pokemon/"
 
   constructor(private http: HttpClient) { }
 
@@ -30,6 +28,10 @@ export class PokemonService {
     }
     console.log(errorMsg)
     return throwError(() => errorMsg)
+  }
+
+  getPokemonSpriteUrl(): boolean {
+    return environment.fakeApi;
   }
 
   getPokemons(): Observable<IPokemon[]> {

@@ -1,1 +1,15 @@
-<p> {{ name }} </p>
+<div class="container">
+    <div class="button-container">
+        <button (click)="goBack()" mat-fab color="primary" aria-label="Go Back">
+          <mat-icon>keyboard_arrow_left</mat-icon>
+        </button>
+      </div>
+    <mat-card class="tarjeta">
+        <mat-card-header>{{name}}</mat-card-header>
+        <mat-card-subtitle>El pokémon mas shido</mat-card-subtitle>
+      <mat-card-content>
+        <p>poder: bien poderoso ala berga</p>
+        <p>presio: no tiene presio no mms son criaturas</p>
+      </mat-card-content>
+    </mat-card>
+  </div>

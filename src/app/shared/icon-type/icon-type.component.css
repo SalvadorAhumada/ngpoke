@@ -5,3 +5,23 @@
 .type_whatshot {
     color:rgba(255, 0, 0, 0.538);
 }
+
+.type_bubble_chart {
+    color:rgba(12, 100, 155, 0.776);
+}
+
+.type_bug_report {
+    color:rgb(77, 160, 10);
+}
+
+.type_flash_on {
+    color:rgb(247, 183, 65);
+}
+
+.type_fiber_manual_record {
+    color:rgb(100, 4, 190);
+}
+
+.type_stop {
+    color:rgb(90, 56, 13);
+}

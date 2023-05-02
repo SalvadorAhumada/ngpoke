@@ -1,7 +1,7 @@
 import { Component, HostListener, OnInit } from '@angular/core';
 import { PokemonService } from '../pokemon.service';
 import { EMPTY, Observable, catchError } from 'rxjs';
-import { IPokemon } from '../pokemon';
+import { IPokemon } from '../shared/interfaces/pokemon';
 import { Router } from '@angular/router';
 
 @Component({
@@ -24,6 +24,11 @@ export class PokemonListComponent implements OnInit {
   loading: boolean = true;
   pokemons$: Observable<IPokemon[]> | undefined;
   errorMsg = '';
+  
+  getSprite(i: number): string {
+    const isLocal: boolean = this.pokemonService.getPokemonSpriteUrl();
+    return isLocal === true ? "assets/img/loader.gif" : `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${i+1}.png`;
+  }
 
   getPokemonLink(pokemon: IPokemon):string {
 

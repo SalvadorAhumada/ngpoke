@@ -164,5 +164,9 @@ export const iconMapping: Imapping = {
     "Grass": "grass",
     "Fire": "whatshot",
     "Electric": "flash_on",
-    "Normal": "panorama_fish_eye"
+    "Normal": "panorama_fish_eye",
+    "Water": "bubble_chart",
+    "Bug": "bug_report",
+    "Poison": "fiber_manual_record",
+    "Ground": "stop"
 }

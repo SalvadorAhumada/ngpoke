@@ -7,4 +7,5 @@ h2 {
     align-items: center;
     justify-content: space-around;
     flex-direction: column;
+    height: 60%;
 }
