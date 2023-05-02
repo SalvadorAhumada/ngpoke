@@ -1,8 +1,11 @@
 import { Component, HostListener, OnInit } from '@angular/core';
-import { PokemonService } from '../pokemon.service';
+import { PokemonService } from '../../pokemon.service';
 import { EMPTY, Observable, catchError } from 'rxjs';
-import { IPokemon } from '../shared/interfaces/pokemon';
+import { IPokemon } from '../../shared/interfaces/pokemon';
 import { Router } from '@angular/router';
+import { Store } from '@ngrx/store';
+import * as PokemonActions from '../state/pokemon.actions';
+import { State } from '../state/pokemon.reducer';
 
 @Component({
   selector: 'app-pokemon-list',
@@ -12,7 +15,7 @@ import { Router } from '@angular/router';
 
 export class PokemonListComponent implements OnInit {
 
-  constructor(private pokemonService: PokemonService, route: Router) {
+  constructor(private pokemonService: PokemonService, route: Router, private store: Store<State>) {
 
     const state = route.getCurrentNavigation();
 
@@ -22,7 +25,7 @@ export class PokemonListComponent implements OnInit {
   title: string = 'ngPokemon';
   errorMessage: string = '';
   loading: boolean = true;
-  pokemons$: Observable<IPokemon[]> | undefined;
+  pokemons: IPokemon[] = [];
   errorMsg = '';
   
   getSprite(i: number): string {
@@ -40,11 +43,16 @@ export class PokemonListComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.pokemons$ = this.pokemonService.getPokemons().pipe(
-      catchError((err) => {
-        this.errorMsg = err;
-        return EMPTY;
-      })
+    this.store.dispatch(PokemonActions.loadPokemons());
+
+    this.store.dispatch({ type: 'GET_POKEMONS'});
+
+    this.store.select('pokemons').subscribe(
+      pokemons => {
+        if(pokemons) {
+          this.pokemons = pokemons.pokemons;
+        }  
+      }
     )
   }
 

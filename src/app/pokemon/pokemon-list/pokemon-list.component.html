@@ -10,7 +10,7 @@
     </div>
 </div>
 <div class="cards-wrapper">
-    <mat-grid-list cols="4" rowHeight="2:1.5" *ngIf="pokemons$ | async as pokemons">
+    <mat-grid-list cols="4" rowHeight="2:1.5" *ngIf="pokemons">
         <mat-grid-tile *ngFor="let pokemon of pokemons; let i = index" class="grid-card">
             <mat-card [routerLink]="getPokemonLink(pokemon)">
                 <mat-card-header>
