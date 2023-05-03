@@ -12,5 +12,5 @@ export const loadPokemonsSuccess = createAction(
 
 export const loadPokemonsError = createAction(
     'GET_POKEMONS_ERROR',
-    props<{ message: string }>()
+    props<{ error: string }>()
 )
