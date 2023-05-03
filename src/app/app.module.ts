@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, isDevMode } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -12,6 +12,7 @@ import { NotFoundComponent } from './shared/not-found/not-found.component';
 import { StoreModule } from '@ngrx/store';
 import { PokemonModule } from './pokemon.module';
 import { EffectsModule } from '@ngrx/effects';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { EffectsModule } from '@ngrx/effects';
     StoreModule.forRoot({}, {}),
     PokemonModule,
     EffectsModule.forRoot([]),
+    StoreDevtoolsModule.instrument({ name: "ngPoke devTools", maxAge: 25, logOnly: !isDevMode() }),
   ],
   providers: [],
   bootstrap: [AppComponent]

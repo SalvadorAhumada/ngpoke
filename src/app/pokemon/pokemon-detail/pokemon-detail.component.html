@@ -1,14 +1,8 @@
-<div class="container">
+<div class="container" *ngIf="pokemonDetail">
     <div class="button-container">
         <button (click)="goBack()" mat-fab color="primary" aria-label="Go Back">
           <mat-icon>keyboard_arrow_left</mat-icon>
         </button>
       </div>
-    <mat-card class="tarjeta">
-        <mat-card-header>{{name}}</mat-card-header>
-        <mat-card-subtitle>Lorem Ipsum</mat-card-subtitle>
-      <mat-card-content>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla</p>
-      </mat-card-content>
-    </mat-card>
+      <h1>#{{ pokemonDetail.id }} {{ name | uppercase }}</h1>
   </div>

@@ -5,5 +5,6 @@ export interface IPokemonDetails {
     moves: Array<any>,
     height: number,
     abilities: Array<any>,
-    type: Array<any>
-  }
+    type: Array<any>,
+    sprites: object
+    }

@@ -1,11 +1,10 @@
 import { Component, HostListener, OnInit } from '@angular/core';
 import { PokemonService } from '../../pokemon.service';
-import { EMPTY, Observable, catchError } from 'rxjs';
 import { IPokemon } from '../../shared/interfaces/pokemon';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import * as PokemonActions from '../state/pokemon.actions';
-import { State } from '../state/pokemon.reducer';
+import { State, getPokemons } from '../state/pokemon.reducer';
 
 @Component({
   selector: 'app-pokemon-list',
@@ -45,12 +44,10 @@ export class PokemonListComponent implements OnInit {
 
     this.store.dispatch(PokemonActions.loadPokemons());
 
-    this.store.dispatch({ type: 'GET_POKEMONS'});
-
-    this.store.select('pokemons').subscribe(
+    this.store.select(getPokemons).subscribe(
       pokemons => {
         if(pokemons) {
-          this.pokemons = pokemons.pokemons;
+          this.pokemons = pokemons;
         }  
       }
     )

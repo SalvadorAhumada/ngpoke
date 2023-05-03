@@ -14,8 +14,6 @@ export class PokemonService {
 
   private url = environment.fakeApi === true ? "fakeApi/pokemons/pokemons.json" : "https://pokeapi.co/api/v2/pokemon?limit=20&amp;offset=200"
   
-  private detailPokemon = environment.fakeApi === true ? "fakeApi/pokemon/pokemonDetail.json" : "https://pokeapi.co/api/v2/pokemon/"
-
   constructor(private http: HttpClient) { }
 
   private handleError(err: HttpErrorResponse) {
@@ -43,10 +41,13 @@ export class PokemonService {
     )
   }
 
-  getPokemonDetail(_name: string): Observable<IPokemonDetails> {
-    return this.http.get<any>(this.detailPokemon).pipe(
+  private getDetail(name: string): string {
+    return environment.fakeApi === true ? "fakeApi/pokemons/pokemonDetail.json" : `https://pokeapi.co/api/v2/pokemon/${name}`
+  }
+
+  getPokemonDetail(name: string): Observable<IPokemonDetails> {
+    return this.http.get<any>(this.getDetail(name)).pipe(
       map((data) => {
-        
         return { 
           id: data.id,
           weight: data.weight,
@@ -54,7 +55,8 @@ export class PokemonService {
           moves: data.moves,
           height: data.height,
           abilities: data.abilities,
-          type: data.type
+          type: data.type,
+          sprites: data.sprites
         }
 
       }),
