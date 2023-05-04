@@ -9,12 +9,14 @@ import { StoreModule } from '@ngrx/store';
 import { pokemonReducer } from './pokemon/state/pokemon.reducer';
 import { EffectsModule } from '@ngrx/effects';
 import { PokemonEffects } from './pokemon/state/pokemon.effects';
+import { PokemonShellComponent } from './pokemon/pokemon-shell/pokemon-shell.component';
 
 @NgModule({
   declarations: [
     PokemonListComponent,
     PokemonDetailComponent,
     IconTypeComponent,
+    PokemonShellComponent,
   ],
   imports: [
     CommonModule,

@@ -1,0 +1,8 @@
+<app-pokemon-list
+    [getSprite]="getSprite"
+    [getPokemonLink]="getPokemonLink"
+    [pokemons]="pokemons$ | async"
+    [loading]="loading"
+    [errorMsg]="errorMsg$ | async"
+    (loadingCompleted)="checkLoading()">
+</app-pokemon-list>

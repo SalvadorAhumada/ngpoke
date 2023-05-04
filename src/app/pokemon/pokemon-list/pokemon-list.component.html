@@ -1,8 +1,8 @@
-<div class="error" *ngIf="errorMsg$ | async as errorMsg">
+<div class="error" *ngIf="errorMsg">
     {{ errorMsg }}
     <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="pest_control"></mat-icon>
 </div>
-<div *ngIf="errorMsg$ && loading" class="loading">
+<div *ngIf="loading" class="loading">
     <div class="loading-wrapper">
         <img src="assets/img/loader.gif" width="100px" />
         <img src="assets/img/loader.gif" width="100px" />
@@ -10,7 +10,7 @@
     </div>
 </div>
 <div class="cards-wrapper">
-    <mat-grid-list cols="4" rowHeight="2:1.5" *ngIf="pokemons$ | async as pokemons">
+    <mat-grid-list cols="4" rowHeight="2:1.5" *ngIf="pokemons">
         <mat-grid-tile *ngFor="let pokemon of pokemons; let i = index" class="grid-card">
             <mat-card [routerLink]="getPokemonLink(pokemon)">
                 <mat-card-header>

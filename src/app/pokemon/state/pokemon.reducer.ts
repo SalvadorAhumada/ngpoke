@@ -1,11 +1,7 @@
-import { createFeatureSelector, createReducer, createSelector, on } from "@ngrx/store";
-import * as PokemonActions from './pokemon.actions';
+import { createReducer, on } from "@ngrx/store";
 import { IPokemon } from "src/app/shared/interfaces/pokemon";
+import * as PokemonActions from './actions/pokemon.actions';
 import * as AppState from '../../state/app.state';
-
-export interface State extends AppState.State {
-    pokemons: PokemonState
-}
 
 export interface PokemonState extends AppState.State {
     pokemons: IPokemon[],
@@ -16,13 +12,6 @@ const initialState: PokemonState = {
     pokemons:[],
     error:''
 }
-
-const getPokemosFeatureState = createFeatureSelector<PokemonState>('pokemons');
-
-export const getPokemons = createSelector(
-    getPokemosFeatureState,
-    state => state.pokemons
-)
 
 export const pokemonReducer = createReducer<PokemonState>(
     initialState,
@@ -41,8 +30,3 @@ export const pokemonReducer = createReducer<PokemonState>(
         }
     })
 );
-
-export const getError = createSelector(
-    getPokemosFeatureState,
-    state => state.error
-)
