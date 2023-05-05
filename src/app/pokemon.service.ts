@@ -12,7 +12,7 @@ import { environment } from '../environments/environment';
 
 export class PokemonService {
 
-  private url = environment.fakeApi === true ? "fakeApi/pokemons/pokemons.json" : "https://pokeapi.co/api/v2/pokemon?limit=20&amp;offset=200"
+  private url = environment.fakeApi === true ? "fakeApi/pokemons/pokemons.json" : "https://pokeapi.co/api/v2/pokemon?limit=150&amp;offset=200"
   
   constructor(private http: HttpClient) { }
 
@@ -41,12 +41,12 @@ export class PokemonService {
     )
   }
 
-  private getDetail(name: string): string {
-    return environment.fakeApi === true ? "fakeApi/pokemons/pokemonDetail.json" : `https://pokeapi.co/api/v2/pokemon/${name}`
+  private getDetail(pokemonNo: number): string {
+    return environment.fakeApi === true ? "fakeApi/pokemons/pokemonDetail.json" : `https://pokeapi.co/api/v2/pokemon/${pokemonNo+1}`
   }
 
-  getPokemonDetail(name: string): Observable<IPokemonDetails> {
-    return this.http.get<any>(this.getDetail(name)).pipe(
+  getPokemonDetail(pokemonNo: number): Observable<IPokemonDetails> {
+    return this.http.get<any>(this.getDetail(pokemonNo)).pipe(
       map((data) => {
         return { 
           id: data.id,
@@ -55,8 +55,9 @@ export class PokemonService {
           moves: data.moves,
           height: data.height,
           abilities: data.abilities,
-          type: data.type,
-          sprites: data.sprites
+          types: data.types,
+          sprites: data.sprites,
+          name: data.name
         }
 
       }),

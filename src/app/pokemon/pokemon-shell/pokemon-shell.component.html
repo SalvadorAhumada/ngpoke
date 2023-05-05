@@ -4,5 +4,7 @@
     [pokemons]="pokemons$ | async"
     [loading]="loading"
     [errorMsg]="errorMsg$ | async"
-    (loadingCompleted)="checkLoading()">
+    (loadingCompleted)="checkLoading()"
+    [breakpoint]="breakpoint"
+    (window:resize)="handleSize()">
 </app-pokemon-list>

@@ -10,6 +10,7 @@ import { pokemonReducer } from './pokemon/state/pokemon.reducer';
 import { EffectsModule } from '@ngrx/effects';
 import { PokemonEffects } from './pokemon/state/pokemon.effects';
 import { PokemonShellComponent } from './pokemon/pokemon-shell/pokemon-shell.component';
+import { PokemonCardComponent } from './pokemon/pokemon-card/pokemon-card.component';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import { PokemonShellComponent } from './pokemon/pokemon-shell/pokemon-shell.com
     PokemonDetailComponent,
     IconTypeComponent,
     PokemonShellComponent,
+    PokemonCardComponent,
   ],
   imports: [
     CommonModule,

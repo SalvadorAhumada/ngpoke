@@ -168,5 +168,10 @@ export const iconMapping: Imapping = {
     "Water": "bubble_chart",
     "Bug": "bug_report",
     "Poison": "fiber_manual_record",
-    "Ground": "stop"
+    "Ground": "stop",
+    "Psychic": "record_voice_over",
+    "Fighting": "pan_tool",
+    "Rock": "toll_icon",
+    "Ice": "view_module",
+    "Dragon": "signal_wifi_4_bar"
 }

@@ -25,3 +25,22 @@
 .type_stop {
     color:rgb(90, 56, 13);
 }
+
+.type_record_voice_over {
+    color: rgba(247, 183, 65);
+}
+.type_pan_tool {
+    color:rgba(241, 152, 152)
+}
+
+.type_toll_icon {
+    color:rgba(93, 89, 89);
+}
+
+.type_view_module {
+    color:rgba(89, 91, 93);
+}
+
+.type_signal_wifi_4_bar {
+    color:rgba(255, 170, 0);
+}

@@ -1,0 +1,109 @@
+.cards-wrapper {
+    max-width: 1200px;
+    margin:0 auto;
+}
+
+.mat-mdc-card {
+    box-shadow: none;
+    backdrop-filter: blur(5px);
+    transition: 0.2s;
+    cursor:pointer;
+}
+
+.mat-mdc-card:hover {
+    transform: scale(1.05);
+    transition: 0.2s;
+    cursor:pointer;
+}
+
+mat-grid-tile a {
+    width: 100%;
+    height: 100%;
+}
+
+.error {
+    height: 50%;
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: column;
+    align-items: center;
+}
+
+mat-card-footer {
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+    font-weight: bolder;
+    padding: 0px 16px 16px;
+}
+
+mat-card-content {
+    padding: 0 48px;
+    height: 230px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.type_grass {
+    background-color: rgba(78, 232, 158, 0.170);  
+}
+
+.type_fire {
+    background-color: rgba(232, 78, 78, 0.170); 
+}
+
+.type_water {
+    background-color: rgba(78, 140, 232, 0.170); 
+}
+
+.type_bug {
+    background-color: rgba(14, 129, 2, 0.170); 
+}
+
+.type_normal {
+    background-color: rgba(255, 234, 0, 0.170); 
+}
+
+.type_poison {
+    background-color: rgba(255, 0, 144, 0.170); 
+}
+
+.type_electric {
+    background-color: rgba(255, 191, 0, 0.170); 
+}
+.type_stop {
+    background-color:rgba(90, 57, 13, 0.170);
+}
+
+.type_ground {
+    background-color:rgba(72, 68, 64, 0.170);
+}
+
+.type_fairy {
+    background-color:rgba(241, 152, 152, 0.170);
+}
+
+.type_fighting {
+    background-color:rgba(185, 28, 28, 0.170);
+}
+
+.type_psychic {
+    background-color:rgba(247, 183, 65, 0.170);
+}
+
+.type_ghost {
+    background-color:rgba(255, 255, 255, 0.17);
+}
+
+.type_dragon {
+    background-color:rgba(255, 170, 0, 0.17);
+}
+
+.type_rock {
+    background-color:rgba(93, 89, 89, 0.17);
+}
+
+.type_ice {
+    background-color:rgba(89, 91, 93, 0.17);
+}

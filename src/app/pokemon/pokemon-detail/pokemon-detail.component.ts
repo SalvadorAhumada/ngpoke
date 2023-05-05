@@ -1,6 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
-import { PokemonService } from '../../pokemon.service';
+import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { IPokemonDetails } from '../../shared/interfaces/pokemonDetail';
 
 @Component({
@@ -8,9 +7,9 @@ import { IPokemonDetails } from '../../shared/interfaces/pokemonDetail';
   templateUrl: './pokemon-detail.component.html',
   styleUrls: ['./pokemon-detail.component.css']
 })
-export class PokemonDetailComponent implements OnInit {
+export class PokemonDetailComponent {
 
-  constructor(private route: ActivatedRoute, private pokemonService: PokemonService, private router: Router) { }
+  constructor(private router: Router) { }
 
   name = '';
 
@@ -18,12 +17,5 @@ export class PokemonDetailComponent implements OnInit {
 
   goBack():void {
     this.router.navigate(['../']);
-  }
-
-  ngOnInit(): void {
-    this.route.params.subscribe(({ pokemonName }) => {
-      this.name = pokemonName;
-      this.pokemonService.getPokemonDetail(pokemonName).subscribe(response => this.pokemonDetail = response);
-    });
   }
 }

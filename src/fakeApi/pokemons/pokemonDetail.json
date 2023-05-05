@@ -1,6 +1,7 @@
 {
     "id": 25,
     "weight": 200,
+    "name":"Pikachu",
     "stats": [
         {
             "stat": {
@@ -34,9 +35,9 @@
             "name": "lighting-rod"
         }
     ],
-    "type": [
+    "types": [
         {
-            "type": "electric"
+            "type": { "name": "fire"}
         }
     ],
     "sprites": {

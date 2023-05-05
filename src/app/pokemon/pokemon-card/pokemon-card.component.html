@@ -1,0 +1,11 @@
+<mat-card [routerLink]="getPokemonLink(pokemon)" [class]="getClass()">
+    <mat-card-header>
+        <app-icon-type [pokemonName]="pokemon.name"></app-icon-type>
+    </mat-card-header>
+    <mat-card-content>
+        <img [src]="getSprite(pokemonNo)" width="150px" />
+    </mat-card-content>
+    <mat-card-footer *ngIf="pokemonDetails">
+        {{ pokemonDetails.name | uppercase }}
+    </mat-card-footer>
+</mat-card>

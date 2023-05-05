@@ -17,6 +17,7 @@ export class PokemonListComponent {
   @Input()pokemons!: IPokemon[] | null;
   @Input()loading!: boolean;
   @Input()errorMsg!: string;
+  @Input()breakpoint!: number;
 
   @Output() loadingCompleted = new EventEmitter<boolean>();
 
