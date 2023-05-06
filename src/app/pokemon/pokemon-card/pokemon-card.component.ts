@@ -1,4 +1,4 @@
-import {  Component, Input, OnInit } from '@angular/core';
+import {  ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
 import { PokemonService } from 'src/app/pokemon.service';
 import { IPokemon } from 'src/app/shared/interfaces/pokemon';
 import { IPokemonDetails } from 'src/app/shared/interfaces/pokemonDetail';
@@ -20,6 +20,10 @@ export class PokemonCardComponent implements OnInit {
   @Input()getPokemonLink!: Function;
   @Input()pokemonNo!: number;
   pokemonDetails!: IPokemonDetails;
+
+  getStyle(hp: number):string {
+    return `width:${hp > 100 ? hp : 100}%`
+  }
 
   ngOnInit(): void {
     this.pokemonService.getPokemonDetail(this.pokemonNo).subscribe(response => {  
