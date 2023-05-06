@@ -13,6 +13,7 @@ import { StoreModule } from '@ngrx/store';
 import { PokemonModule } from './pokemon.module';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
     PokemonModule,
     EffectsModule.forRoot([]),
     StoreDevtoolsModule.instrument({ name: "ngPoke devTools", maxAge: 25, logOnly: !isDevMode() }),
+    FontAwesomeModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

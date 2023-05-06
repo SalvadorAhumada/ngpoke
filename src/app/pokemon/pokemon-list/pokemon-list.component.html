@@ -2,13 +2,6 @@
     {{ errorMsg }}
     <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="pest_control"></mat-icon>
 </div>
-<div *ngIf="loading" class="loading">
-    <div class="loading-wrapper">
-        <img src="assets/img/loader.gif" width="100px" />
-        <img src="assets/img/loader.gif" width="100px" />
-        <img src="assets/img/loader.gif" width="100px" />
-    </div>
-</div>
 <div class="cards-wrapper">
     <mat-grid-list [cols]="breakpoint" rowHeight="2:2" *ngIf="pokemons">
         <mat-grid-tile *ngFor="let pokemon of pokemons; let i = index" class="grid-card">

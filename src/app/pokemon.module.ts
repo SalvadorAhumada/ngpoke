@@ -11,6 +11,7 @@ import { EffectsModule } from '@ngrx/effects';
 import { PokemonEffects } from './pokemon/state/pokemon.effects';
 import { PokemonShellComponent } from './pokemon/pokemon-shell/pokemon-shell.component';
 import { PokemonCardComponent } from './pokemon/pokemon-card/pokemon-card.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { PokemonCardComponent } from './pokemon/pokemon-card/pokemon-card.compon
     MaterialModule,
     AppRoutingModule,
     StoreModule.forFeature('pokemons', pokemonReducer),
-    EffectsModule.forFeature([PokemonEffects])
+    EffectsModule.forFeature([PokemonEffects]),
+    FontAwesomeModule,
   ]
 })
 export class PokemonModule { }

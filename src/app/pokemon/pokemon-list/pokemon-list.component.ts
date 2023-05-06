@@ -9,15 +9,15 @@ import { IPokemonData } from 'src/app/shared/interfaces/pokemon';
 })
 
 export class PokemonListComponent {
-  
+
   title: string = 'ngPokemon';
 
-  @Input()getSprite!: Function;
-  @Input()getPokemonLink!: Function;
-  @Input()pokemons!: IPokemonData[] | null;
-  @Input()loading!: boolean;
-  @Input()errorMsg!: string;
-  @Input()breakpoint!: number;
+  @Input() getSprite!: Function;
+  @Input() getPokemonLink!: Function;
+  @Input() pokemons!: IPokemonData[] | null;
+  @Input() loading!: boolean;
+  @Input() errorMsg!: string;
+  @Input() breakpoint!: number;
 
   @Output() loadingCompleted = new EventEmitter<boolean>();
 
