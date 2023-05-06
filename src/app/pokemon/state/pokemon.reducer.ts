@@ -1,10 +1,10 @@
 import { createReducer, on } from "@ngrx/store";
-import { IPokemon } from "src/app/shared/interfaces/pokemon";
+import { IPokemonData } from "src/app/shared/interfaces/pokemon";
 import * as PokemonActions from './actions/pokemon.actions';
 import * as AppState from '../../state/app.state';
 
 export interface PokemonState extends AppState.State {
-    pokemons: IPokemon[],
+    pokemons: IPokemonData[],
     error: string
 }
 

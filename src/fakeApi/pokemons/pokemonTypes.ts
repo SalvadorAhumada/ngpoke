@@ -161,17 +161,17 @@ export const types: IKeyValue = {
 }
 
 export const iconMapping: Imapping = {
-    "Grass": "grass",
-    "Fire": "whatshot",
-    "Electric": "flash_on",
-    "Normal": "panorama_fish_eye",
-    "Water": "bubble_chart",
-    "Bug": "bug_report",
-    "Poison": "fiber_manual_record",
-    "Ground": "stop",
-    "Psychic": "record_voice_over",
-    "Fighting": "pan_tool",
-    "Rock": "toll_icon",
-    "Ice": "view_module",
-    "Dragon": "signal_wifi_4_bar"
+    "grass": "grass",
+    "fire": "whatshot",
+    "electric": "flash_on",
+    "normal": "panorama_fish_eye",
+    "water": "bubble_chart",
+    "bug": "bug_report",
+    "poison": "fiber_manual_record",
+    "ground": "stop",
+    "psychic": "record_voice_over",
+    "fighting": "pan_tool",
+    "rock": "toll_icon",
+    "ice": "view_module",
+    "dragon": "signal_wifi_4_bar"
 }

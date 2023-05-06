@@ -3,7 +3,7 @@ import { Observable } from 'rxjs';
 import { Store } from '@ngrx/store';
 import { State, getPokemons, getError } from '../state';
 import * as PokemonActions from '../state/actions/pokemon.actions';
-import { IPokemon } from '../../shared/interfaces/pokemon';
+import { IPokemonData } from '../../shared/interfaces/pokemon';
 import { PokemonService } from '../../pokemon.service';
 import { Router } from '@angular/router';
 
@@ -25,7 +25,7 @@ export class PokemonShellComponent {
 
   errorMessage: string = '';
   loading: boolean = true;
-  pokemons$!: Observable<IPokemon[]>;
+  pokemons$!: Observable<IPokemonData[]>;
   errorMsg$!: Observable<any>;
   breakpoint: number = 4;
 
@@ -54,7 +54,7 @@ export class PokemonShellComponent {
     this.loading = !this.loading;
   }
 
-  getPokemonLink(pokemon: IPokemon): string {
+  getPokemonLink(pokemon: IPokemonData): string {
 
     return `/pokedex/${encodeURIComponent(
       pokemon.name.toLocaleLowerCase()

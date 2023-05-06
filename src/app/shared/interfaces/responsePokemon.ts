@@ -1,9 +1,9 @@
-import { IPokemon } from "./pokemon";
+import { IPokemonData } from "./pokemon";
 
 export interface IResponsePokemon {
     count: number;
     next: string;
     previous: string;
-    results: Array<IPokemon>;
+    results: Array<IPokemonData>;
     }
     

@@ -2,7 +2,7 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, catchError, map, throwError } from 'rxjs';
 import { IResponsePokemon } from './shared/interfaces/responsePokemon';
-import { IPokemon } from './shared/interfaces/pokemon';
+import { IPokemonData } from './shared/interfaces/pokemon';
 import { IPokemonDetails } from './shared/interfaces/pokemonDetail';
 import { environment } from '../environments/environment';
 
@@ -32,7 +32,7 @@ export class PokemonService {
     return environment.fakeApi;
   }
 
-  getPokemons(): Observable<IPokemon[]> {
+  getPokemons(): Observable<IPokemonData[]> {
     return this.http.get<IResponsePokemon>(this.url).pipe(
       map((data) => {
         return data.results;

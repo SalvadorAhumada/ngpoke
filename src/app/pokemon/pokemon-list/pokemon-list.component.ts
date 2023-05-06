@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, HostListener, Input, Output } from '@angular/core';
-import { IPokemon } from 'src/app/shared/interfaces/pokemon';
+import { IPokemonData } from 'src/app/shared/interfaces/pokemon';
 
 @Component({
   selector: 'app-pokemon-list',
@@ -14,7 +14,7 @@ export class PokemonListComponent {
 
   @Input()getSprite!: Function;
   @Input()getPokemonLink!: Function;
-  @Input()pokemons!: IPokemon[] | null;
+  @Input()pokemons!: IPokemonData[] | null;
   @Input()loading!: boolean;
   @Input()errorMsg!: string;
   @Input()breakpoint!: number;
@@ -22,6 +22,10 @@ export class PokemonListComponent {
   @Output() loadingCompleted = new EventEmitter<boolean>();
 
   loaderHandler(): void {
+    this.loadingCompleted.emit();
+  }
+
+  checkLoading(): void {
     this.loadingCompleted.emit();
   }
 

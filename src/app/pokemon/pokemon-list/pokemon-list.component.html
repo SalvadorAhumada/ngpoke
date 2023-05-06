@@ -12,7 +12,7 @@
 <div class="cards-wrapper">
     <mat-grid-list [cols]="breakpoint" rowHeight="2:2" *ngIf="pokemons">
         <mat-grid-tile *ngFor="let pokemon of pokemons; let i = index" class="grid-card">
-            <app-pokemon-card class="grid-card" [pokemon]="pokemon" [getSprite]="getSprite" [pokemonNo]="i"
+            <app-pokemon-card (loadingCompleted)="checkLoading" class="grid-card" [pokemon]="pokemon" [getSprite]="getSprite" [pokemonNo]="i"
                 [getPokemonLink]="getPokemonLink">
             </app-pokemon-card>
         </mat-grid-tile>

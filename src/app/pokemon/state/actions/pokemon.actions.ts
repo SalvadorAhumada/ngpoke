@@ -1,5 +1,5 @@
 import { createAction, props } from "@ngrx/store";
-import { IPokemon } from "src/app/shared/interfaces/pokemon";
+import { IPokemonData } from "src/app/shared/interfaces/pokemon";
 
 export const loadPokemons = createAction(
     'GET_POKEMONS'
@@ -7,7 +7,7 @@ export const loadPokemons = createAction(
 
 export const loadPokemonsSuccess = createAction(
     'GET_POKEMONS_SUCCESS',
-    props<{ pokemons: IPokemon[] }>()
+    props<{ pokemons: IPokemonData[] }>()
 )
 
 export const loadPokemonsError = createAction(
