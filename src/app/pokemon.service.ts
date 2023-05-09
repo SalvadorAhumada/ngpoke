@@ -41,11 +41,11 @@ export class PokemonService {
     )
   }
 
-  private getDetail(pokemonNo: number): string {
-    return environment.fakeApi === true ? "fakeApi/pokemons/pokemonDetail.json" : `https://pokeapi.co/api/v2/pokemon/${pokemonNo+1}`
+  private getDetail(pokemonNo: number | string): string {
+    return environment.fakeApi === true ? "fakeApi/pokemons/pokemonDetail.json" : `https://pokeapi.co/api/v2/pokemon/${pokemonNo}`
   }
 
-  getPokemonDetail(pokemonNo: number): Observable<IPokemonDetails> {
+  getPokemonDetail(pokemonNo: number | string): Observable<IPokemonDetails> {
     return this.http.get<any>(this.getDetail(pokemonNo)).pipe(
       map((data) => {
         return { 

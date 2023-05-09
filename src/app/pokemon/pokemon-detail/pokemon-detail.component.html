@@ -1,7 +1,25 @@
-<div class="container">
-    <div class="button-container">
-        <button (click)="goBack()" mat-fab color="primary" aria-label="Go Back">
-          <mat-icon>keyboard_arrow_left</mat-icon>
-        </button>
-      </div>
+<div class="container" *ngIf="selectedPokemon$ | async as pokemon">
+  <div class="img-wrapper">
+    <img [src]="showPokemonImg(pokemon)" width="150px" />
   </div>
+  <mat-accordion>
+    <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          <h2>{{ pokemon.name }}</h2>
+        </mat-panel-title>
+        <mat-panel-description>
+          #{{ pokemon.id }}
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+    <mat-panel-description class="poke-info">
+      <pre><code>{{ showPokemonDetails(pokemon) }}</code></pre>
+    </mat-panel-description>
+    </mat-expansion-panel>
+  </mat-accordion>
+  <div class="button-container">
+    <button (click)="goBack()" mat-fab color="primary" aria-label="Go Back">
+      <mat-icon>keyboard_arrow_left</mat-icon>
+    </button>
+  </div>
+</div>

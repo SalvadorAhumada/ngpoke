@@ -8,8 +8,33 @@ export interface IPokemonDetails {
     height: number,
     abilities: Array<IPokemonAbilities>,
     types: Array<IPokemonTypes>,
-    sprites: object,
+    sprites: IPokemonSprites,
     name: string
+}
+
+export interface IPokemonSprites {
+    back_default: string;
+    back_female: null;
+    back_shiny: string;
+    back_shiny_female: null;
+    front_default: string;
+    front_female: null;
+    front_shiny: string;
+    front_shiny_female: null;
+    other?: IPokemonOther;
+    versions?: any;
+    animated?: any;
+}
+
+export interface IPokemonOther {
+    dream_world: any;
+    home: any;
+    "official-artwork": IPokemonOfficialArtwork;
+}
+
+export interface IPokemonOfficialArtwork {
+    front_default: string;
+    front_shiny: string;
 }
 
 interface IPokemonStats {

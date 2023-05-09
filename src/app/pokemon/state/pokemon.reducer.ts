@@ -2,15 +2,28 @@ import { createReducer, on } from "@ngrx/store";
 import { IPokemonData } from "src/app/shared/interfaces/pokemon";
 import * as PokemonActions from './actions/pokemon.actions';
 import * as AppState from '../../state/app.state';
+import { IPokemonDetails, IPokemonSprites } from "src/app/shared/interfaces/pokemonDetail";
 
 export interface PokemonState extends AppState.State {
     pokemons: IPokemonData[],
-    error: string
+    error: string,
+    selectedPokemon: IPokemonDetails
 }
 
 const initialState: PokemonState = {
-    pokemons:[],
-    error:''
+    pokemons: [],
+    error: '',
+    selectedPokemon: {
+        id: 0,
+        weight: 0,
+        stats: [],
+        moves: [],
+        height: 0,
+        abilities: [],
+        types: [],
+        sprites: {} as IPokemonSprites,
+        name: ''
+    }
 }
 
 export const pokemonReducer = createReducer<PokemonState>(
@@ -25,8 +38,14 @@ export const pokemonReducer = createReducer<PokemonState>(
     on(PokemonActions.loadPokemonsError, (state: PokemonState, action) => {
         return {
             ...state,
-            pokemons:[],
+            pokemons: [],
             error: action.error
         }
-    })
+    }),
+    on(PokemonActions.loadSelectedPokemon, (state: PokemonState, action) => {
+        return {
+            ...state,
+            selectedPokemon: action.selectedPokemon
+        }
+    }),
 );

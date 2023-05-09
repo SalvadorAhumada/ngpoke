@@ -1,4 +1,4 @@
-<mat-card [routerLink]="getPokemonLink(pokemon)" *ngIf="pokemonDetails && cardLoaded; else elseBlock" [class]="getClass()">
+<mat-card (click)="setSelectedPokemon()" [routerLink]="getPokemonLink(pokemon)" [state]="{ fromMain: true }" *ngIf="pokemonDetails && cardLoaded; else elseBlock" [class]="getClass()">
     <mat-card-header>
         <app-icon-type [pokemonName]="pokemon.name" [types]="pokemonDetails.types"></app-icon-type>
     </mat-card-header>

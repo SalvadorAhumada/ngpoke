@@ -17,3 +17,8 @@ export const getError = createSelector(
     getPokemosFeatureState,
     state => state.error
 )
+
+export const getSelectedPokemon = createSelector(
+    getPokemosFeatureState,
+    state => state.selectedPokemon
+)
