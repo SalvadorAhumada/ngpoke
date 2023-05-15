@@ -13,8 +13,7 @@ import { environment } from '../environments/environment';
 export class PokemonService {
 
   private url = environment.fakeApi === true ? "fakeApi/pokemons/pokemons.json" : "https://pokeapi.co/api/v2/pokemon?limit=150&amp;offset=200"
-  
-  constructor(private http: HttpClient) { }
+    constructor(private http: HttpClient) { }
 
   private handleError(err: HttpErrorResponse) {
     let errorMsg = '';
@@ -41,11 +40,11 @@ export class PokemonService {
     )
   }
 
-  private getDetail(pokemonNo: number | string): string {
-    return environment.fakeApi === true ? "fakeApi/pokemons/pokemonDetail.json" : `https://pokeapi.co/api/v2/pokemon/${pokemonNo}`
+  private getDetail(pokemonNo: number | string  | null): string {
+    return environment.fakeApi === true ? "fakeApi/pokemons/pkemonDetail.json" : `https://pokeapi.co/api/v2/pokemon/${pokemonNo}`
   }
 
-  getPokemonDetail(pokemonNo: number | string): Observable<IPokemonDetails> {
+  getPokemonDetail(pokemonNo: number | string | null): Observable<IPokemonDetails> {
     return this.http.get<any>(this.getDetail(pokemonNo)).pipe(
       map((data) => {
         return { 

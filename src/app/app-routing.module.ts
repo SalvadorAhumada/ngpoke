@@ -7,7 +7,7 @@ import { NotFoundComponent } from './shared/not-found/not-found.component';
 const routes: Routes = [
   { path: '', redirectTo:'/pokedex', pathMatch: "full" },
   { path: 'pokedex', component: PokemonShellComponent },
-  { path: 'pokedex/:pokemonName', component: PokemonDetailComponent },
+  { path: 'pokedex/:pokemon', component: PokemonDetailComponent },
   { path: '**', component: NotFoundComponent }
 ];
 

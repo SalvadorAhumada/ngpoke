@@ -1,0 +1,35 @@
+<div class="form-pokemon">
+<!--     <mat-form-field appearance="fill">
+        <h1 mat-dialog-title>Search for Pokémon...</h1>
+        <div mat-dialog-content>
+            <mat-form-field appearance="fill">
+                <mat-label>Name</mat-label>
+                <input matInput>
+            </mat-form-field>
+        </div>
+        <div mat-dialog-actions>
+            <button mat-button mat-dialog-close>Cancel</button>
+            <button mat-button mat-dialog-close cdkFocusInitial>Search</button>
+        </div>
+    </mat-form-field> -->
+    <h1 mat-dialog-title>Search for Pokémon</h1>
+    <mat-form-field appearance="fill" class="search-input">
+        <mat-label>By name...</mat-label>
+        <input matInput [(ngModel)]="toSearch">
+    </mat-form-field>
+    <div mat-dialog-actions>
+        <button mat-button mat-dialog-close>Cancel</button>
+        <button mat-button mat-dialog-close cdkFocusInitial [mat-dialog-close]="toSearch">Search</button>
+    </div>
+<!--     <mat-form-field appearance="fill">
+        <mat-label>Select</mat-label>
+        <mat-select>
+            <mat-option value="one">First option</mat-option>
+            <mat-option value="two">Second option</mat-option>
+        </mat-select>
+    </mat-form-field> -->
+<!--     <mat-form-field appearance="fill">
+        <mat-label>Textarea</mat-label>
+        <textarea matInput></textarea>
+    </mat-form-field> -->
+</div>
