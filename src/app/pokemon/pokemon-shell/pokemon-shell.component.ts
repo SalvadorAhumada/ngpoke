@@ -60,11 +60,11 @@ export class PokemonShellComponent {
       pokemon.name.toLocaleLowerCase()
     )}`;
   }
-
+  
   ngOnInit(): void {
-
+    
     this.errorMsg$ = this.store.select(getError);
-
+    
     this.store.dispatch(PokemonActions.loadPokemons());
 
     this.pokemons$ = this.store.select(getPokemons);

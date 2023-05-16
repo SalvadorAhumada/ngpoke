@@ -1,6 +1,5 @@
 <div class="error" *ngIf="errorMsg">
-    {{ errorMsg }}
-    <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="pest_control"></mat-icon>
+    <app-error-view [error]="errorMsg"></app-error-view>
 </div>
 <div class="cards-wrapper">
     <mat-grid-list [cols]="breakpoint" rowHeight="2:2" *ngIf="pokemons">

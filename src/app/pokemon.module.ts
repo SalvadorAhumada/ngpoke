@@ -12,9 +12,11 @@ import { PokemonEffects } from './pokemon/state/pokemon.effects';
 import { PokemonShellComponent } from './pokemon/pokemon-shell/pokemon-shell.component';
 import { PokemonCardComponent } from './pokemon/pokemon-card/pokemon-card.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { ErrorViewComponent } from './error-view/error-view.component';
 
 @NgModule({
   declarations: [
+    ErrorViewComponent,
     PokemonListComponent,
     PokemonDetailComponent,
     IconTypeComponent,

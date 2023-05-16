@@ -21,7 +21,7 @@ export class NavbarComponent {
     });
 
     dialogRef.afterClosed().subscribe(pokemonName => {
-      this.pokemonService.getPokemonDetail(pokemonName).subscribe(response => {  
+      this.pokemonService.getPokemonDetail(pokemonName, true).subscribe(response => {  
         const queryParams = { pokemon: response.name.trim().toLowerCase() };
         this.router.navigate([`/pokedex/search`], { queryParams });
       });

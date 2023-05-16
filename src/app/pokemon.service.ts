@@ -5,6 +5,9 @@ import { IResponsePokemon } from './shared/interfaces/responsePokemon';
 import { IPokemonData } from './shared/interfaces/pokemon';
 import { IPokemonDetails } from './shared/interfaces/pokemonDetail';
 import { environment } from '../environments/environment';
+import { Store } from '@ngrx/store';
+import { State, getError } from '../app/pokemon/state';
+import * as PokemonActions from '../app/pokemon/state/actions/pokemon.actions';
 
 @Injectable({
   providedIn: 'root'
@@ -13,18 +16,26 @@ import { environment } from '../environments/environment';
 export class PokemonService {
 
   private url = environment.fakeApi === true ? "fakeApi/pokemons/pokemons.json" : "https://pokeapi.co/api/v2/pokemon?limit=150&amp;offset=200"
-    constructor(private http: HttpClient) { }
+    constructor(private http: HttpClient, private store: Store<State>) { }
 
-  private handleError(err: HttpErrorResponse) {
-    let errorMsg = '';
+  errorMsg: string = '';
 
-    if (err.error instanceof ErrorEvent) {
-      errorMsg = `An error ocurred ${err.error.message}`;
+  private handleError(err: HttpErrorResponse, isSearch: boolean = false) {
+    if(isSearch) {
+      this.errorMsg = `No Pokémon found`;
     } else {
-      errorMsg = `Server returned code ${err.status}, error message is: ${err.message}`
+      if (err.error instanceof ErrorEvent) {
+        this.errorMsg = `An error ocurred ${err.error.message}`;
+      } else {
+        this.errorMsg = `Server returned code ${err.status}, error message is: ${err.message}`
+      }
     }
-    console.log(errorMsg)
-    return throwError(() => errorMsg)
+    this.getErrorIfExist();
+    return throwError(() => this.errorMsg)
+  }
+
+  getErrorIfExist(): void {
+    this.store.dispatch(PokemonActions.loadPokemonsError({error: this.errorMsg}));
   }
 
   getPokemonSpriteUrl(): boolean {
@@ -36,15 +47,15 @@ export class PokemonService {
       map((data) => {
         return data.results;
       }),
-      catchError(this.handleError)
+      catchError((err) => this.handleError(err))
     )
   }
 
   private getDetail(pokemonNo: number | string  | null): string {
-    return environment.fakeApi === true ? "fakeApi/pokemons/pkemonDetail.json" : `https://pokeapi.co/api/v2/pokemon/${pokemonNo}`
+    return environment.fakeApi === true ? "fakeApi/pokemons/pokemonDetail.json" : `https://pokeapi.co/api/v2/pokemon/${pokemonNo}`
   }
 
-  getPokemonDetail(pokemonNo: number | string | null): Observable<IPokemonDetails> {
+  getPokemonDetail(pokemonNo: number | string | null, isSearch: boolean = false): Observable<IPokemonDetails> {
     return this.http.get<any>(this.getDetail(pokemonNo)).pipe(
       map((data) => {
         return { 
@@ -60,7 +71,7 @@ export class PokemonService {
         }
 
       }),
-      catchError(this.handleError)
+      catchError((err) => this.handleError(err, isSearch))
     )
   }
 }
